@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tangy barbecue, pickles, and a short film for anyone who gets the McRib craving.">
+<meta name="theme-color" content="#1d1914">
+<title>For Nathanael | The McRib Effect</title>
+<style>
+  :root { color-scheme: dark; --ink: #1d1914; --paper: #fff1d6; --gold: #ffc365; --muted: #ddc9aa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ink); color: var(--paper); font: 1.075rem/1.6 system-ui, sans-serif; }
+  a { color: inherit; }
+  a:focus-visible, video:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+  .wrap { width: min(100% - 2.5rem, 74rem); margin-inline: auto; }
+  header { border-bottom: 1px solid #fff1d633; }
+  nav { min-height: 4.25rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .nav-links { display: flex; gap: clamp(.75rem, 3vw, 2rem); flex-wrap: wrap; }
+  nav a { text-underline-offset: .28em; }
+  .wordmark { font-weight: 800; text-decoration: none; }
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 34rem; }
+  .hero-copy { align-self: center; padding: clamp(3rem, 8vw, 7rem) clamp(1rem, 5vw, 5rem) clamp(3rem, 8vw, 7rem) max(1.25rem, calc((100vw - 74rem) / 2)); }
+  .hero-image { width: 100%; height: 100%; min-height: 0; object-fit: cover; object-position: center 54%; }
+  .eyebrow { color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  h1, h2 { margin: .25em 0; font-family: Georgia, serif; font-weight: 700; line-height: .96; letter-spacing: -.045em; text-wrap: balance; }
+  h1 { font-size: clamp(3.6rem, 8vw, 8rem); }
+  h1 span { color: var(--gold); }
+  h2 { font-size: clamp(2.75rem, 6vw, 5.5rem); }
+  p { max-width: 39ch; }
+  .intro { color: var(--muted); }
+  .button { display: inline-block; margin-top: .8rem; padding: .7rem 1.3rem; background: var(--gold); color: var(--ink); font-weight: 800; text-decoration: none; border-radius: 2rem; }
+  .button:hover { background: var(--paper); }
+  .sandwich { background: #fff1d6; color: #1d1914; padding-block: clamp(3rem, 7vw, 6rem); }
+  .ingredients { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1.5rem; }
+  .ingredients li { border-top: 1px solid #9b7e5d; padding-top: .7rem; }
+  .ingredients strong { display: block; font-size: 1.25rem; }
+  .sandwich-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .closeup { margin: 0; }
+  .closeup video { aspect-ratio: 11 / 10; }
+  .closeup video:focus-visible { outline-color: #512722; }
+  .closeup figcaption { font-size: .9rem; margin-top: .5rem; }
+  .gallery { padding-block: clamp(3rem, 8vw, 6rem); }
+  .cards { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 1.5rem); }
+  .cards a { display: block; border-radius: .45rem; }
+  .cards img { display: block; width: 100%; height: auto; border-radius: inherit; }
+  @media (max-width: 720px) {
+    .sandwich-grid { grid-template-columns: 1fr; }
+    .closeup { width: min(100%, 22rem); margin-inline: auto; }
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .originals { background: #32241c; padding-block: clamp(3rem, 8vw, 6rem); }
+  .originals .original-grid { margin-top: 1.5rem; }
+  .originals .reaction-grid { display: block; }
+  .originals .featured-reaction { width: min(100%, 25rem); margin-inline: auto; }
+  .featured-reaction video { max-width: none; }
+  .featured-reaction figcaption { font-weight: 700; }
+  .original-grid.original-videos { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 54rem; margin-inline: auto; }
+  @media (max-width: 520px) { .original-grid.original-videos { grid-template-columns: 1fr; } }
+  .original-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+  .original-grid figure { margin: 0; min-width: 0; }
+  .original-grid a { display: block; }
+  .original-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: .55rem; }
+  .original-grid figcaption { margin-top: .5rem; font-size: .9rem; }
+  @media (max-width: 800px) { .original-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .availability { background: #ffc365; color: #1d1914; padding-block: clamp(3rem, 7vw, 6rem); text-align: center; }
+  .availability p { margin-inline: auto; max-width: 50ch; }
+  .availability .button { background: #1d1914; color: #fff1d6; }
+  .availability .button:hover { background: #512722; }
+  .availability .button:focus-visible, .sandwich a:focus-visible { outline-color: #512722; }
+  .film { background: #512722; padding-block: clamp(3rem, 8vw, 7rem); }
+  .film-grid { display: grid; grid-template-columns: 1fr minmax(0, 20rem); gap: clamp(2rem, 8vw, 8rem); align-items: center; max-width: 58rem; }
+  .film p { color: var(--paper); }
+  video { display: block; width: 100%; aspect-ratio: 9 / 16; background: var(--ink); border: 1px solid #fff1d65c; border-radius: 1rem; }
+  .note { padding-block: clamp(3rem, 8vw, 6rem); }
+  .note p { max-width: 55ch; }
+  footer { color: var(--muted); font-size: .9rem; border-top: 1px solid #fff1d633; padding-block: 1.25rem; }
+  @media (max-width: 720px) {
+    .hero, .film-grid { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+    .hero-image { height: auto; aspect-ratio: 4 / 3; }
+    video { max-width: 20rem; margin-inline: auto; }
+  }
+</style>
+</head>
+<body id="top">
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="wordmark" href="#top">The McRib Effect</a>
+    <div class="nav-links">
+      <a href="#originals">Original videos</a>
+      <a href="#film">The film</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#find">Find a McRib</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">An independent McRib fan project</p>
+      <h1 id="hero-title">Craving a <span>McRib?</span></h1>
+      <p class="intro">Tangy barbecue sauce, crisp pickles, and seasoned pork on a toasted bun. Sometimes all it takes is one McRib video to change your lunch plans.</p>
+      <a class="button" id="play-reaction" href="#mcrib-reaction">Watch the Full McRib Reaction</a>
+    </div>
+    <img class="hero-image" src="mcrib-assets/originals/restaurant-lunch.webp" fetchpriority="high" alt="A man holding a McRib at a restaurant table">
+  </section>
+  <section class="originals" id="originals" aria-labelledby="originals-title">
+    <div class="wrap">
+      <h2 id="originals-title">Original videos</h2>
+      <div class="original-grid reaction-grid">
+        <figure class="featured-reaction" id="mcrib-reaction">
+          <video controls playsinline preload="none" poster="mcrib-assets/originals/sandwich-reaction-poster.webp" aria-label="The sandwich reaction">
+            <source src="mcrib-assets/originals/sandwich-reaction.mp4" type="video/mp4">
+            <a href="mcrib-assets/originals/sandwich-reaction.mp4">Open the sandwich reaction</a>
+          </video>
+          <figcaption>The sandwich reaction · 0:22</figcaption>
+        </figure>
+      </div>
+      <div class="original-grid original-videos">
+        <figure>
+          <video controls playsinline preload="none" poster="mcrib-assets/originals/restaurant-moment-poster.webp" aria-label="A moment at the restaurant">
+            <source src="mcrib-assets/originals/restaurant-moment.mp4" type="video/mp4">
+            <a href="mcrib-assets/originals/restaurant-moment.mp4">Open a moment at the restaurant</a>
+          </video>
+          <figcaption>A moment at the restaurant · 0:14</figcaption>
+        </figure>
+        <figure>
+          <video controls playsinline preload="none" poster="mcrib-assets/originals/holiday-clip-poster.webp" aria-label="The holiday clip">
+            <source src="mcrib-assets/originals/holiday-clip.mp4" type="video/mp4">
+            <a href="mcrib-assets/originals/holiday-clip.mp4">Open the holiday clip</a>
+          </video>
+          <figcaption>The holiday clip · 0:23</figcaption>
+        </figure>
+        <figure>
+          <video controls playsinline preload="none" poster="mcrib-assets/originals/car-video-poster.webp" aria-label="The car video">
+            <source src="mcrib-assets/originals/car-video.mp4" type="video/mp4">
+            <a href="mcrib-assets/originals/car-video.mp4">Open the car video</a>
+          </video>
+          <figcaption>The car video · 2:19</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="sandwich" id="sandwich" aria-labelledby="sandwich-title">
+    <div class="wrap sandwich-grid">
+      <div>
+        <h2 id="sandwich-title">What’s in a McRib?</h2>
+        <ul class="ingredients">
+          <li><strong>Seasoned pork</strong>A boneless patty with that familiar rib shape.</li>
+          <li><strong>Tangy BBQ sauce</strong>A generous coating on every bite.</li>
+          <li><strong>Pickles &amp; onions</strong>Pickle slices and slivered onions for crunch.</li>
+          <li><strong>Toasted bun</strong>A soft homestyle roll that holds it all together.</li>
+        </ul>
+        <p><a href="https://www.mcdonalds.com/us/en-us/product/mcrib.html">See ingredients and nutrition at McDonald’s</a></p>
+      </div>
+      <figure class="closeup">
+        <video controls playsinline preload="none" poster="mcrib-assets/mcrib-closeup.webp" aria-label="Silent close-up of a McRib with its bun lifted">
+          <source src="mcrib-assets/mcrib-closeup.mp4" type="video/mp4">
+          <a href="mcrib-assets/mcrib-closeup.mp4">Open the McRib close-up</a>
+        </video>
+        <figcaption>A peek under the bun from the original footage.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="film" id="film" aria-labelledby="film-title">
+    <div class="wrap film-grid">
+      <div>
+        <p class="eyebrow">The short film</p>
+        <h2 id="film-title">Some love stories start with a sandwich.</h2>
+        <p>Nathanael’s enthusiasm inspired this 24-second beach romance starring a McRib.</p>
+      </div>
+      <video controls playsinline preload="none" poster="mcrib-assets/poster.webp" aria-label="Nathanael and the McRib, a 24-second silent short film">
+        <source src="mcrib-assets/story.mp4" type="video/mp4">
+        <a href="mcrib-assets/story.mp4">Open the short film</a>
+      </video>
+    </div>
+  </section>
+  <section class="wrap gallery" id="gallery" aria-labelledby="gallery-title">
+    <h2 id="gallery-title">A love story in six pictures.</h2>
+    <p class="intro">Open any poster for a closer look.</p>
+    <ol class="cards" role="list">
+      <li><a href="mcrib-assets/poster.webp"><img src="mcrib-assets/poster.webp" width="540" height="960" loading="lazy" alt="Love at first bite. One look. Completely hooked."></a></li>
+      <li><a href="mcrib-assets/card-02.webp"><img src="mcrib-assets/card-02.webp" width="540" height="960" loading="lazy" alt="She had him at BBQ. A little sweet. A little saucy."></a></li>
+      <li><a href="mcrib-assets/card-03.webp"><img src="mcrib-assets/card-03.webp" width="540" height="960" loading="lazy" alt="The perfect pairing. Together, they made waves."></a></li>
+      <li><a href="mcrib-assets/card-04.webp"><img src="mcrib-assets/card-04.webp" width="540" height="960" loading="lazy" alt="A little saucy. Things got a little messy."></a></li>
+      <li><a href="mcrib-assets/card-05.webp"><img src="mcrib-assets/card-05.webp" width="540" height="960" loading="lazy" alt="For a limited time. Wait. You’re leaving already?"></a></li>
+      <li><a href="mcrib-assets/card-06.webp"><img src="mcrib-assets/card-06.webp" width="540" height="960" loading="lazy" alt="Some loves return. Until we meat again."></a></li>
+    </ol>
+  </section>
+  <section class="originals" id="photos" aria-labelledby="photos-title">
+    <div class="wrap">
+      <h2 id="photos-title">Original photos</h2>
+      <div class="original-grid">
+      <figure><a href="mcrib-assets/originals/restaurant-lunch.webp"><img src="mcrib-assets/originals/restaurant-lunch.webp" loading="lazy" alt="A man holding a sandwich at a restaurant table"></a></figure>
+      <figure><a href="mcrib-assets/originals/at-the-table.webp"><img src="mcrib-assets/originals/at-the-table.webp" loading="lazy" alt="A woman holding her lunch at a restaurant table"></a></figure>
+      <figure><a href="mcrib-assets/originals/two-sandwiches.webp"><img src="mcrib-assets/originals/two-sandwiches.webp" loading="lazy" alt="Two people holding sandwiches in a booth"></a></figure>
+      <figure><a href="mcrib-assets/originals/sharing-a-table.webp"><img src="mcrib-assets/originals/sharing-a-table.webp" loading="lazy" alt="Two people sharing a restaurant table"></a></figure>
+      </div>
+    </div>
+  </section>
+  <section class="wrap note" aria-labelledby="note-title">
+    <h2 id="note-title">Nathanael, this one’s for you.</h2>
+    <p class="intro">Your McRib enthusiasm got us thinking. If the sandwich comes back in 2027, we’d love to make a short film with you about what happens after someone sees your video and decides to get one.</p>
+  </section>
+  <section class="availability" id="find" aria-labelledby="find-title">
+    <div class="wrap">
+      <h2 id="find-title">Is the McRib near you?</h2>
+      <p>The McRib appears for a limited time at participating restaurants. Choose your location in the McDonald’s app and check its menu before heading out.</p>
+      <a class="button" href="https://www.mcdonalds.com/us/en-us/download-app.html">Check the McDonald’s app</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">An independent fan project made for Nathanael.</div></footer>
+<script>
+  const reactionButton = document.getElementById('play-reaction');
+  const reactionVideo = document.querySelector('#mcrib-reaction video');
+
+  reactionButton.addEventListener('click', () => {
+    reactionVideo.play().catch(() => {
+      // If playback is blocked, leave the native controls available at the jump target.
+      reactionVideo.focus({ preventScroll: true });
+    });
+  });
+</script>
+</body>
+</html>
